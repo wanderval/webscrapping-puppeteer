@@ -1,0 +1,23 @@
+{
+  "name": "webscrapping",
+  "version": "1.0.0",
+  "description": "webscrapping puppeteer library test",
+  "main": "index.js",
+  "dependencies": {
+    "puppeteer": "^5.3.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wanderval/webscrapping-puppeteer.git"
+  },
+  "author": "Wanderval",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wanderval/webscrapping-puppeteer/issues"
+  },
+  "homepage": "https://github.com/wanderval/webscrapping-puppeteer#readme"
+}
