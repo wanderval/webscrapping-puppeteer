@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <div>
+    <h2>ROCKSEAT</h2>
+    <div class="container"></div>
+  </div>
+
+  <div>
+    <h2>CHALLENGE/Snekers</h2>
+    <div class="container-tenis container-product"></div>
+  </div>
+
+  <div>
+    <h2>CHALLENGE/Wish Product</h2>
+    <div class="container-wish-product container-product"></div>
+  </div>
+
+  <script>
+    async function getJsonFileData(pathFile) {
+      const response = await fetch(pathFile);
+      const data = await response.json();
+      return data;
+    }
+
+    function setHtmlContainer(containerClass, htmlList) {
+      document.querySelector(containerClass).innerHTML = htmlList;
+    }
+
+    function buildHtmlListProduct(data) {
+      return data.map((item) => `<li><span class="title">${item.title}</span><img src="${item.src}"/><div class="container-price"><span class="price">${item.price}</span></div></li>`).join('');
+    }
+
+    (async() => {
+      const data = await getJsonFileData('./data/instagram.json');
+
+      // formatar os dados para enviar para o html
+      const htmlList = data.map(({src}) => `<li><img src="${src}"/></li>`).join('');
+
+      // colocar no html
+      setHtmlContainer('.container', htmlList);
+    })();
+
+    (async() => {
+      const data = await getJsonFileData('./data/netshoes.json');
+      const htmlList = buildHtmlListProduct(data);
+
+      setHtmlContainer('.container-tenis', htmlList);
+    })();
+
+    (async() => {
+      const data = await getJsonFileData('./data/mercadolivre.json');
+      const htmlList = buildHtmlListProduct(data);
+
+      setHtmlContainer('.container-wish-product', htmlList);
+    })();
+  </script>
+</body>
+</html>
